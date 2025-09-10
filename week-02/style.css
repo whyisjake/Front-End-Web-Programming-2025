@@ -1,0 +1,174 @@
+/*
+  AI Disclosure: Portions of this CSS file may have been generated or assisted by AI tools (e.g., GitHub Copilot).
+  All code has been reviewed and adapted by a human contributor.
+
+  ==========================================================================
+  Table of Contents
+  ==========================================================================
+
+  1. Color Palette
+  2. Base Styles
+  3. Header Styles
+  4. Main Content Styles
+  5. Profile Picture Styles
+  6. Footer Styles
+  7. Link Styles
+  8. Typography
+  ========================================================================== */
+
+/* ==========================================================================
+  1. Color Palette
+  ========================================================================== */
+
+:root {
+  --usc-cardinal: #990000;
+  --usc-gold: #ffcc00;
+  --neutral-dark: #333333;
+  --neutral-light: #f4f4f4;
+  --neutral-white: #ffffff;
+}
+/* ==========================================================================
+  2. Base Styles
+  ========================================================================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, "San Francisco", sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* ==========================================================================
+  3. Header Styles
+  ========================================================================== */
+
+header {
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 6px solid var(--usc-gold);
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  box-shadow: 0 4px 10px -4px rgba(153, 0, 0, 0.4);
+}
+
+header h1, header h2 {
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  color: var(--neutral-light);
+}
+
+header h1 {
+  font-size: 2.5em;
+}
+
+header h2 {
+  font-size: 1.2em;
+}
+
+/* ==========================================================================
+  4. Main Content Styles
+  ========================================================================== */
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--neutral-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+  5. Profile Picture Styles
+  ========================================================================== */
+
+#profile-pic {
+  float: right;
+  margin: 0 0 10px 10px;
+  text-align: center;
+}
+
+#profile-pic a {
+  background-color: transparent;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+}
+
+#profile-pic a img {
+  height: 200px;
+  width: auto;
+  border-radius: 10px;
+  border: 4px solid var(--usc-cardinal);
+  box-shadow: var(--neutral-dark) 2px 2px 6px;
+}
+
+/* ==========================================================================
+  6. Footer Styles
+  ========================================================================== */
+
+footer {
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 6px solid #ffcc00;
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  box-shadow: 0 4px 8px -4px rgba(153, 0, 0, 0.15); /* subtle cardinal shadow for texture */
+}
+
+footer p {
+  margin: 10px;
+  color: var(--neutral-white);
+}
+
+/* ==========================================================================
+  7. Link Styles
+  ========================================================================== */
+
+a {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--usc-cardinal);
+  background-color: var(--usc-gold);
+  color: var(--usc-cardinal);
+  text-decoration: none;
+}
+
+a:hover {
+  box-shadow: 0 2px 8px rgba(153, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ==========================================================================
+  8. Typography
+  ========================================================================== */
+
+h1, h2, h3 {
+  color: #333;
+}
+
+p, li {
+  line-height: 1.6;
+  color: #555;
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+ul a, ol a {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--usc-cardinal);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ul a:hover, ol a:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
