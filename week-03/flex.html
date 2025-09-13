@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Flexbox Layout</title>
+  <style>
+    body {
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1976d2;
+      color: #fff;
+      padding: 24px;
+      font-size: 2em;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .main {
+      flex: 2;
+      background: #d32f2f;
+      color: #fff;
+      min-height: 300px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .sidebar {
+      flex: 1;
+      background: #ffeb3b;
+      color: #333;
+      min-height: 300px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background: #388e3c;
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      font-size: 1.2em;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      Blue Header
+    </header>
+    <div class="content">
+      <div class="main">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi
+          nisl aliquam erat, nec cursus erat urna nec erat. Suspendisse potenti.</p>
+        <p>Jake Spurlock is a web developer and technology enthusiast with years of experience in front-end and back-end
+          development. He enjoys sharing knowledge and building innovative web solutions.</p>
+        <p>Praesent euismod, justo at cursus dictum, sapien erat facilisis enim, nec dictum velit enim eu erat. Nullam
+          ac urna eu felis dapibus condimentum sit amet a augue.</p>
+        <p>Jake has contributed to various open source projects and regularly speaks at tech conferences. His passion
+          for learning drives him to stay updated with the latest trends in web programming.</p>
+      </div>
+      <div class="sidebar">
+        Yellow Sidebar
+      </div>
+    </div>
+    <footer>
+      Green Footer
+    </footer>
+  </div>
+</body>
+
+</html>

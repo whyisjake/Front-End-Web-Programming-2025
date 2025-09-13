@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Floated Layout</title>
+  <style>
+    body {
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    header {
+      background: #1976d2;
+      color: #fff;
+      padding: 24px;
+      font-size: 2em;
+    }
+
+    .main {
+      float: left;
+      width: 640px;
+      background: #d32f2f;
+      color: #fff;
+      min-height: 300px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .sidebar {
+      float: right;
+      width: 280px;
+      background: #ffeb3b;
+      color: #333;
+      min-height: 300px;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background: #388e3c;
+      clear: both;
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      font-size: 1.2em;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      Blue Header
+    </header>
+    <div class="main">
+      Red Main Content Area
+    </div>
+    <div class="sidebar">
+      Yellow Sidebar
+    </div>
+    <footer>
+      Green Footer
+    </footer>
+  </div>
+</body>
+
+</html>
