@@ -1,0 +1,113 @@
+/* USC Header Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+header {
+  background-color: #000000;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-family: "Din Condensed", "Arial", sans-serif;
+  font-size: 30px;
+}
+
+/* USC Logo */
+.usc-logo {
+  height: 35px;
+  width: auto;
+}
+
+/* USC Crest */
+.crest {
+  height: 40px;
+  width: auto;
+  margin-right: 15px;
+}
+
+.crest-img {
+  height: 40px;
+  width: auto;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffcc00; /* USC Gold */
+}
+
+/* Let's make the sub menu hidden, and then visible on hover */
+.nav-links li ul {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 5px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  min-width: 200px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links li:hover ul {
+  display: block;
+  padding: 20px;
+}
+
+.nav-links li ul li {
+  padding: 8px 20px;
+  white-space: nowrap;
+}
+
+/* Fix for dropdowns near the right edge - align right for the last few items */
+.nav-links li:last-child ul,
+.nav-links li:nth-last-child(2) ul {
+  right: 0;
+  left: auto;
+}
+
+/* Search Icon */
+.search-icon {
+  color: #ffffff;
+  width: 24px;
+  height: 40px;
+}
