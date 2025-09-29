@@ -162,12 +162,12 @@ made manual edits to ensure accuracy and completeness.
           <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </section>
-    <!-- <section class="contact-form-submit-results">
+    <section class="contact-form-submit-results">
       <h2>Form Submission Results</h2>
       <div id="formResults" class="form-results">
         <p>Your form submission results will appear here after you submit the form.</p>
       </div>
-    </section> -->
+    </section>
 
   </main>
   <footer>
@@ -177,40 +177,75 @@ made manual edits to ensure accuracy and completeness.
 
 </body>
 <script>
-  // document.getElementById('contactForm').addEventListener('submit', function (event) {
-  //   event.preventDefault(); // Prevent the default form submission
+  document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
 
-  //   // Get form values
-  //   const name = document.getElementById('name').value;
-  //   const email = document.getElementById('email').value;
-  //   const subject = document.getElementById('subject').value;
-  //   const message = document.getElementById('message').value;
+    // Get all form values
+    const name = document.getElementById('name').value;
+    const contactMethod = document.getElementById('contact-method').value;
+    const phone = document.getElementById('phone').value;
+    const inquiryType = document.querySelector('input[name="inquiry-type"]:checked')?.value || '';
+    const newsletter = document.getElementById('newsletter').checked ? 'Yes' : 'No';
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    const bestTime = document.getElementById('best-time').value;
+    const preferredDate = document.getElementById('preferred-date').value;
+    const website = document.getElementById('website').value;
+    const priority = document.getElementById('priority').value;
+    const budget = document.getElementById('budget').value;
+    const password = document.getElementById('password').value ? '***hidden***' : '';
+    const attachment = document.getElementById('attachment').files[0]?.name || '';
+    const formSource = document.getElementById('form-source').value;
+    const colorPreference = document.getElementById('color-preference').value;
 
-  //   // Create a results message
-  //   const resultsMessage = `
-  //     <h3>Thank you for contacting me, ${name}!</h3>
-  //     <p><strong>Email:</strong> ${email}</p>
-  //     <p><strong>Subject:</strong> ${subject}</p>
-  //     <p><strong>Message:</strong> ${message}</p>
-  //   `;
+    // Get all selected services
+    const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+      .map(checkbox => checkbox.value)
+      .join(', ') || 'None selected';
 
-  //   // Display the results in the formResults div
-  //   document.getElementById('formResults').innerHTML = resultsMessage;
+    // Create a comprehensive results message
+    const resultsMessage = `
+      <h3>Thank you for contacting me, ${name}!</h3>
+      <div class="form-results-grid">
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Preferred Contact Method:</strong> ${contactMethod || 'Not specified'}</p>
+        <p><strong>Phone Number:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Type of Inquiry:</strong> ${inquiryType || 'Not selected'}</p>
+        <p><strong>Newsletter Subscription:</strong> ${newsletter}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Best Time to Contact:</strong> ${bestTime || 'Not specified'}</p>
+        <p><strong>Preferred Contact Date:</strong> ${preferredDate || 'Not specified'}</p>
+        <p><strong>Website/Portfolio:</strong> ${website || 'Not provided'}</p>
+        <p><strong>Priority Level:</strong> ${priority}/5</p>
+        <p><strong>Budget Range:</strong> ${budget ? '$' + budget : 'Not specified'}</p>
+        <p><strong>Password:</strong> ${password}</p>
+        <p><strong>Attached File:</strong> ${attachment || 'No file attached'}</p>
+        <p><strong>Form Source:</strong> ${formSource}</p>
+        <p><strong>Brand Color:</strong> <span style="color: ${colorPreference}; font-weight: bold;">${colorPreference}</span></p>
+        <p><strong>Services Needed:</strong> ${services}</p>
+      </div>
+    `;
 
-  //   // Optionally, reset the form
-  //   document.getElementById('contactForm').reset();
+    // Display the results in the formResults div
+    document.getElementById('formResults').innerHTML = resultsMessage;
 
-  //   // Add a button to clear the results
-  //   const clearButton = document.createElement('button');
-  //   clearButton.textContent = 'Clear Results';
-  //   clearButton.className = 'clear-btn';
-  //   clearButton.addEventListener('click', function () {
-  //     document.getElementById('formResults').innerHTML = '<p>Your form submission results will appear here after you submit the form.</p>';
-  //   });
+    // Optionally, reset the form
+    document.getElementById('contactForm').reset();
 
-  //   // Add the button to the results div
-  //   document.getElementById('formResults').appendChild(clearButton);
-  // });
+    // Add a button to clear the results
+    const clearButton = document.createElement('button');
+    clearButton.textContent = 'Clear Results';
+    clearButton.className = 'clear-btn';
+    clearButton.addEventListener('click', function () {
+      document.getElementById('formResults').innerHTML = '<p>Your form submission results will appear here after you submit the form.</p>';
+    });
+
+    // Add the button to the results div
+    document.getElementById('formResults').appendChild(clearButton);
+  });
 </script>
 
 </html>
