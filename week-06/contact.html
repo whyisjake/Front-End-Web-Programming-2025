@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--
+AI DISCLOSURE: This HTML document was created with assistance from GitHub Copilot AI.
+AI was used to help structure the semantic HTML, organize content sections, and enhance
+the biographical information based on provided resume details. All personal information,
+career history, and achievements are factually accurate and belong to Jake Spurlock.
+The professor (Jake Spurlock) provided the content direction, personal details, and
+made manual edits to ensure accuracy and completeness.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Jake Spurlock - Front End Web Engineer - USC</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1 id="title" class="page-title">Jake Spurlock</h1>
+    <div class="subtitle">
+      <h2>Senior Director, Customer Success | WordPress Security Lead | <span class="red-text">USC</span> Educator</h2>
+    </div>
+  </header>
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="contact.html" class="nav-link active">Contact</a>
+  </nav>
+
+  <main class="flex-container">
+    <section class="contact-section">
+      <h2>Contact Me</h2>
+      <div class="contact-container">
+        <form class="contact-form" id="contactForm" method="post" action="https://formtester.goodbytes.be/post.php">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-method">Preferred Contact Method:</label>
+            <select id="contact-method" name="contact-method" required>
+              <option value="">Please select...</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+              <option value="text">Text Message</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+          </div>
+
+          <div class="form-group">
+            <fieldset>
+              <legend>Type of Inquiry:</legend>
+              <label for="general">
+                <input type="radio" id="general" name="inquiry-type" value="general" required>
+                General Question
+              </label>
+              <label for="business">
+                <input type="radio" id="business" name="inquiry-type" value="business" required>
+                Business Inquiry
+              </label>
+              <label for="teaching">
+                <input type="radio" id="teaching" name="inquiry-type" value="teaching" required>
+                Teaching/USC Related
+              </label>
+            </fieldset>
+          </div>
+
+          <div class="form-group">
+            <label for="newsletter">
+              <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+              Subscribe to newsletter updates
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="best-time">Best Time to Contact:</label>
+            <input type="time" id="best-time" name="best-time">
+          </div>
+
+          <div class="form-group">
+            <label for="preferred-date">Preferred Contact Date:</label>
+            <input type="date" id="preferred-date" name="preferred-date">
+          </div>
+
+          <div class="form-group">
+            <label for="website">Website/Portfolio:</label>
+            <input type="url" id="website" name="website" placeholder="https://example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="priority">Priority Level:</label>
+            <input type="range" id="priority" name="priority" min="1" max="5" value="3">
+            <span>Low to High</span>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget Range:</label>
+            <input type="number" id="budget" name="budget" min="0" step="100" placeholder="1000">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+          </div>
+
+          <div class="form-group">
+            <label for="attachment">Attach File:</label>
+            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx">
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" id="form-source" name="form-source" value="contact-page">
+          </div>
+
+          <div class="form-group">
+            <label for="color-preference">Brand Color:</label>
+            <input type="color" id="color-preference" name="color-preference" value="#990000">
+          </div>
+
+          <div class="form-group">
+            <fieldset>
+              <legend>Services Needed (check all that apply):</legend>
+              <label for="web-design">
+                <input type="checkbox" id="web-design" name="services" value="web-design">
+                Web Design
+              </label>
+              <label for="development">
+                <input type="checkbox" id="development" name="services" value="development">
+                Development
+              </label>
+              <label for="consulting">
+                <input type="checkbox" id="consulting" name="services" value="consulting">
+                Consulting
+              </label>
+            </fieldset>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span class="front">Send Message</span>
+          </button>
+        </form>
+    </section>
+    <section class="contact-form-submit-results">
+      <h2>Form Submission Results</h2>
+      <div id="formResults" class="form-results">
+        <p>Your form submission results will appear here after you submit the form.</p>
+      </div>
+    </section>
+
+  </main>
+  <footer>
+    <p>Copyright © 2025 Jake Spurlock</p>
+  </footer>
+
+
+</body>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get all form values
+    const name = document.getElementById('name').value;
+    const contactMethod = document.getElementById('contact-method').value;
+    const phone = document.getElementById('phone').value;
+    const inquiryType = document.querySelector('input[name="inquiry-type"]:checked')?.value || '';
+    const newsletter = document.getElementById('newsletter').checked ? 'Yes' : 'No';
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    const bestTime = document.getElementById('best-time').value;
+    const preferredDate = document.getElementById('preferred-date').value;
+    const website = document.getElementById('website').value;
+    const priority = document.getElementById('priority').value;
+    const budget = document.getElementById('budget').value;
+    const password = document.getElementById('password').value ? '***hidden***' : '';
+    const attachment = document.getElementById('attachment').files[0]?.name || '';
+    const formSource = document.getElementById('form-source').value;
+    const colorPreference = document.getElementById('color-preference').value;
+
+    // Get all selected services
+    const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+      .map(checkbox => checkbox.value)
+      .join(', ') || 'None selected';
+
+    // Create a comprehensive results message
+    const resultsMessage = `
+      <h3>Thank you for contacting me, ${name}!</h3>
+      <div class="form-results-grid">
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Preferred Contact Method:</strong> ${contactMethod || 'Not specified'}</p>
+        <p><strong>Phone Number:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Type of Inquiry:</strong> ${inquiryType || 'Not selected'}</p>
+        <p><strong>Newsletter Subscription:</strong> ${newsletter}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Best Time to Contact:</strong> ${bestTime || 'Not specified'}</p>
+        <p><strong>Preferred Contact Date:</strong> ${preferredDate || 'Not specified'}</p>
+        <p><strong>Website/Portfolio:</strong> ${website || 'Not provided'}</p>
+        <p><strong>Priority Level:</strong> ${priority}/5</p>
+        <p><strong>Budget Range:</strong> ${budget ? '$' + budget : 'Not specified'}</p>
+        <p><strong>Password:</strong> ${password}</p>
+        <p><strong>Attached File:</strong> ${attachment || 'No file attached'}</p>
+        <p><strong>Form Source:</strong> ${formSource}</p>
+        <p><strong>Brand Color:</strong> <span style="color: ${colorPreference}; font-weight: bold;">${colorPreference}</span></p>
+        <p><strong>Services Needed:</strong> ${services}</p>
+      </div>
+    `;
+
+    // Display the results in the formResults div
+    document.getElementById('formResults').innerHTML = resultsMessage;
+
+    // Optionally, reset the form
+    document.getElementById('contactForm').reset();
+
+    // Add a button to clear the results
+    const clearButton = document.createElement('button');
+    clearButton.textContent = 'Clear Results';
+    clearButton.className = 'clear-btn';
+    clearButton.addEventListener('click', function () {
+      document.getElementById('formResults').innerHTML = '<p>Your form submission results will appear here after you submit the form.</p>';
+    });
+
+    // Add the button to the results div
+    document.getElementById('formResults').appendChild(clearButton);
+  });
+</script>
+
+</html>
