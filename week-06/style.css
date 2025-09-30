@@ -76,6 +76,12 @@ body {
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, "San Francisco", sans-serif;
   background-color: var(--neutral-light);
+  background: linear-gradient(
+    to right,
+    var(--usc-cardinal),
+    var(--usc-gold),
+    var(--usc-cardinal)
+  );
 }
 
 /* ==========================================================================
