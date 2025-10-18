@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+AI DISCLOSURE: This HTML document was created with assistance from Claude AI.
+This example demonstrates fetching content from WordPress using the WP-JSON REST API
+and displaying it dynamically using jQuery.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WordPress API Example - USC Front End Web Programming</title>
+  <meta name="description" content="Example of fetching WordPress content via REST API">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css" id="theme-stylesheet">
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    .api-controls {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    #load-posts-btn {
+      padding: 12px 24px;
+      background-color: var(--usc-cardinal);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    #load-posts-btn:hover {
+      background-color: var(--usc-cardinal-dark);
+    }
+
+    #load-posts-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .loading {
+      text-align: center;
+      color: var(--text-medium);
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 20px 0;
+      border: 1px solid #f5c6cb;
+    }
+
+    #posts-container {
+      margin-top: 30px;
+    }
+
+    .post-item {
+      background-color: var(--neutral-white);
+      border: 1px solid var(--neutral-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--shadow-medium);
+    }
+
+    .post-title {
+      color: var(--usc-cardinal);
+      font-size: 1.5em;
+      margin: 0 0 10px 0;
+    }
+
+    .post-title a {
+      color: var(--usc-cardinal);
+      text-decoration: none;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    .post-title a:hover {
+      text-decoration: underline;
+      box-shadow: none;
+    }
+
+    .post-meta {
+      color: var(--text-light);
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .post-excerpt {
+      line-height: 1.6;
+      color: var(--text-medium);
+    }
+
+    .post-excerpt p {
+      margin: 0;
+    }
+
+    .api-info {
+      background-color: var(--neutral-light);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--usc-cardinal);
+    }
+
+    .api-info h3 {
+      margin-top: 0;
+      color: var(--usc-cardinal);
+    }
+
+    .api-info code {
+      background-color: var(--neutral-medium);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="title" class="page-title">WordPress REST API Example</h1>
+    <div class="subtitle">
+      <h2>Fetching Content with jQuery - <span class="red-text">USC</span> Front End Web Programming</h2>
+    </div>
+  </header>
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="profile.html" class="nav-link">Profile</a>
+    <a href="videos.html" class="nav-link">Videos</a>
+    <a href="api-example.html" class="nav-link active">API Example</a>
+    <button id="dark-mode-toggle" class="nav-link">🌙 Dark Mode</button>
+  </nav>
+
+  <main>
+    <div class="api-info">
+      <h3>About This Example</h3>
+      <p>This page demonstrates how to fetch content from a WordPress website using the WP-JSON REST API. Click the button below to load recent posts from WordPress.org.</p>
+      <p><strong>API Endpoint:</strong> <code>https://wordpress.org/news/wp-json/wp/v2/posts</code></p>
+      <p>The WordPress REST API provides a powerful way to interact with WordPress sites programmatically. It returns data in JSON format, making it easy to integrate WordPress content into any web application.</p>
+    </div>
+
+    <div class="api-controls">
+      <button id="load-posts-btn">📰 Load WordPress News Posts</button>
+    </div>
+
+    <div id="loading-indicator" class="loading" style="display: none;">
+      Loading posts...
+    </div>
+
+    <div id="error-container"></div>
+
+    <div id="posts-container"></div>
+  </main>
+
+  <footer>
+    <p>Copyright © 2025 Jake Spurlock | USC Front End Web Programming</p>
+  </footer>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    $(document).ready(function() {
+      // Dark mode toggle functionality
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        $('#theme-stylesheet').attr('href', 'assets/css/style-dark.css');
+        $('#dark-mode-toggle').text('☀️ Light Mode');
+      }
+
+      $('#dark-mode-toggle').click(function() {
+        const currentStylesheet = $('#theme-stylesheet').attr('href');
+        if (currentStylesheet === 'assets/css/style.css') {
+          $('#theme-stylesheet').attr('href', 'assets/css/style-dark.css');
+          $(this).text('☀️ Light Mode');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          $('#theme-stylesheet').attr('href', 'assets/css/style.css');
+          $(this).text('🌙 Dark Mode');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+
+      // WordPress API functionality
+      $('#load-posts-btn').click(function() {
+        // Disable button and show loading indicator
+        $(this).prop('disabled', true);
+        $('#loading-indicator').show();
+        $('#error-container').empty();
+        $('#posts-container').empty();
+
+        // Fetch posts from WordPress.org News
+        $.ajax({
+          url: 'https://wordpress.org/news/wp-json/wp/v2/posts',
+          method: 'GET',
+          dataType: 'json',
+          data: {
+            per_page: 5, // Fetch 5 posts
+            _embed: true // Include embedded data like featured images
+          },
+          success: function(posts) {
+            // Hide loading indicator
+            $('#loading-indicator').hide();
+            $('#load-posts-btn').prop('disabled', false);
+
+            // Display posts
+            if (posts.length === 0) {
+              $('#posts-container').html('<p>No posts found.</p>');
+              return;
+            }
+
+            posts.forEach(function(post) {
+              // Extract post data
+              const title = post.title.rendered;
+              const excerpt = post.excerpt.rendered;
+              const link = post.link;
+              const date = new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              });
+
+              // Create post HTML
+              const postHTML = `
+                <div class="post-item">
+                  <h3 class="post-title">
+                    <a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a>
+                  </h3>
+                  <div class="post-meta">Published on ${date}</div>
+                  <div class="post-excerpt">${excerpt}</div>
+                </div>
+              `;
+
+              // Append to container
+              $('#posts-container').append(postHTML);
+            });
+
+            // Smooth scroll to posts
+            $('html, body').animate({
+              scrollTop: $('#posts-container').offset().top - 20
+            }, 500);
+          },
+          error: function(xhr, status, error) {
+            // Hide loading indicator and show error
+            $('#loading-indicator').hide();
+            $('#load-posts-btn').prop('disabled', false);
+
+            const errorHTML = `
+              <div class="error-message">
+                <strong>Error loading posts:</strong> ${error || 'Unable to fetch posts. Please try again later.'}
+              </div>
+            `;
+            $('#error-container').html(errorHTML);
+          }
+        });
+      });
+
+      // Optional: Load posts automatically on page load
+      // Uncomment the line below if you want posts to load immediately
+      // $('#load-posts-btn').click();
+    });
+  </script>
+
+</body>
+
+</html>

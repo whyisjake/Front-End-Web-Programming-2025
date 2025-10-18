@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Toggle Color</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Click the button to change my color!</h1>
+  <button id="colorBtn">Toggle Random Color</button>
+
+  <button id="darkMode">Toggle Dark Mode</button>
+
+  <script>
+    $(document).ready(function () {
+      $("#colorBtn").click(function () {
+        // Generate a random hex color
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        // Apply it to the h1
+        $("h1").css("color", randomColor);
+      });
+      $("#darkMode").click(function () {
+        $("body").toggleClass("dark-mode");
+        if ($("body").hasClass("dark-mode")) {
+          $("body").css("background-color", "#121212");
+          $("body").css("color", "#ffffff");
+        } else {
+          $("body").css("background-color", "#ffffff");
+          $("body").css("color", "#000000");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

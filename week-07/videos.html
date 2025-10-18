@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+AI DISCLOSURE: This HTML document was created with assistance from Claude AI.
+This example demonstrates fetching YouTube videos using the YouTube Data API v3.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Jake Spurlock - Videos - USC</title>
+  <meta name="description" content="Recent YouTube videos from Jake Spurlock">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css" id="theme-stylesheet">
+  <link rel="stylesheet" href="assets/css/youtube-cards.css">
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 id="title" class="page-title">Jake Spurlock</h1>
+    <div class="subtitle">
+      <h2>Recent Videos</h2>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="profile.html" class="nav-link">Profile</a>
+    <a href="videos.html" class="nav-link active">Videos</a>
+    <button id="dark-mode-toggle" class="nav-link">🌙 Dark Mode</button>
+  </nav>
+
+  <main class="projects-container">
+    <div class="api-info">
+      <h3>YouTube Videos</h3>
+      <p>Recent uploads from my YouTube channel. This page demonstrates using the YouTube Data API v3 to dynamically fetch and display video content.</p>
+      <p><strong>Note:</strong> To use this page, you'll need to add your YouTube API key in <code>assets/js/youtube.js</code></p>
+    </div>
+
+    <div id="videos-container">
+      <p class="loading-text">Loading videos from YouTube...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Copyright © 2025 Jake Spurlock</p>
+  </footer>
+
+  <!-- Main JavaScript -->
+  <script src="assets/js/main.js"></script>
+  <!-- YouTube API JavaScript -->
+  <script src="assets/js/youtube.js"></script>
+</body>
+
+</html>
