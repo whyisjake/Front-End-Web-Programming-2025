@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Images Demo (srcset & sizes)</title>
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 2rem;
+      background-color: #fafafa;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .image-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    p {
+      max-width: 600px;
+      margin: 1rem auto;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background-color: #fffdf2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Responsive Image Demo: <code>srcset</code> + <code>sizes</code></h1>
+
+  <div class="image-wrapper">
+    <img src="https://dummyimage.com/400x250/ff0000/ffffff&text=400w+SMALL" srcset="
+        https://dummyimage.com/400x250/ff0000/ffffff&text=400w+SMALL 400w,
+        https://dummyimage.com/800x500/00ff00/ffffff&text=800w+MEDIUM 800w,
+        https://dummyimage.com/1200x750/0000ff/000000&text=1200w+LARGE 1200w" sizes="(max-width: 600px) 90vw,
+             (max-width: 1200px) 60vw,
+             1200px" alt="Sample image of a student working on a project">
+  </div>
+
+  <p>
+    Resize your browser window and open DevTools → Network → Img.
+    <br>
+    Watch which image file (<code>400w</code>, <code>800w</code>, or <code>1200w</code>) the browser chooses.
+  </p>
+
+</body>
+
+</html>
