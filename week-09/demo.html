@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Promo</title>
+
+  <style>
+    :root {
+      --bg-dark: #111;
+      --bg-light: #ffffff;
+      --accent: #ffcc00;
+      --text-light: #ffffff;
+      --text-dark: #222;
+      --radius: 12px;
+    }
+
+    /* Global resets / base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, "San Francisco", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+
+    header {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    header .top-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 70vh;
+      background: radial-gradient(circle at 20% 20%, #990000 0%, #000 70%);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: left;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-text h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      color: var(--accent);
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      max-width: 40ch;
+      color: var(--text-light);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      width: fit-content;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background-color: #ffe773;
+      transform: scale(1.03);
+    }
+
+    /* ABOUT SECTION */
+    .about {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #990000;
+      font-weight: 600;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    /* DETAILS / CARDS */
+    .details {
+      background-color: #f7f7f7;
+      padding: 3rem 1.5rem;
+    }
+
+    .details-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .details-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 1rem 1.25rem;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #990000;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* --- MEDIA QUERIES / RESPONSIVE BREAKPOINTS --- */
+
+    /* Tablet+ */
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .hero-text {
+        max-width: 50%;
+      }
+
+      .hero-image {
+        max-width: 40%;
+      }
+
+      .hero-image img {
+        border-radius: var(--radius);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      }
+
+      .about {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Desktop+ */
+    @media (min-width: 1200px) {
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero-text h2 {
+        font-size: 3rem;
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="top-row">
+      <h1>Future Design Summit</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#details">Details</a>
+        <a href="#register">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h2>Design. Build. Ship.</h2>
+        <p>
+          A one-day workshop for creators who want to move from idea to
+          prototype. Learn responsive design, modern UI patterns, and how
+          to communicate your work.
+        </p>
+        <a href="#register" class="cta-btn">Save Your Seat</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://via.placeholder.com/800x500.png?text=Hero+Image" alt="Students collaborating at a workshop">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <h3>Why this matters</h3>
+      <p>
+        The web is responsive. Your work needs to be, too. We'll learn how to
+        build layouts that adapt across mobile, tablet, and desktop without
+        writing three different codebases.
+      </p>
+    </div>
+    <div class="about-img">
+      <img src="https://via.placeholder.com/600x400.png?text=Session+Preview"
+        alt="Screenshot of responsive layout examples">
+    </div>
+  </section>
+
+  <!-- DETAILS / CARDS -->
+  <section class="details" id="details">
+    <div class="details-inner">
+      <div class="details-title">What You'll Get</div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h4>Live Coaching</h4>
+          <p>Work in small groups with direct design + front-end feedback.</p>
+        </div>
+
+        <div class="card">
+          <h4>Real Artifacts</h4>
+          <p>Leave with a responsive page you can actually ship and show.</p>
+        </div>
+
+        <div class="card">
+          <h4>Collaboration</h4>
+          <p>Practice handoff & communication — just like real product teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="register">
+    <p>Future Design Summit — November 12</p>
+    <p>Hosted at Iovine and Young Academy</p>
+    <p>Register now. Limited seats.</p>
+  </footer>
+
+</body>
+
+</html>
