@@ -1,0 +1,805 @@
+/*
+  AI Disclosure: Portions of this CSS file may have been generated or assisted by AI tools (e.g., GitHub Copilot).
+  All code has been reviewed and adapted by a human contributor.
+
+  ==========================================================================
+  Table of Contents
+  ==========================================================================
+
+  1. Color Palette
+  2. Base Styles
+  3. Header Styles
+  4. Main Content Styles
+  5. Profile Picture Styles
+  6. Footer Styles
+  7. Link Styles
+  8. Typography
+  9. Form Controls
+  ========================================================================== */
+
+/* ==========================================================================
+  1. Color Palette
+  ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --usc-cardinal: #990000;
+  --usc-cardinal-dark: #7a0000;
+  --usc-cardinal-rgb: 153, 0, 0;
+  --usc-gold: #ffcc00;
+
+  /* Neutral Colors */
+  --neutral-white: #ffffff;
+  --neutral-light: #f4f4f4;
+  --neutral-medium: #e0e0e0;
+  --neutral-border: #ddd;
+  --neutral-dark: #333333;
+
+  /* Text Colors */
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #666;
+
+  /* Shadows & Overlays */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-dark: rgba(0, 0, 0, 0.9);
+  --cardinal-shadow-light: rgba(var(--usc-cardinal-rgb), 0.15);
+  --cardinal-shadow-medium: rgba(var(--usc-cardinal-rgb), 0.3);
+  --cardinal-shadow-strong: rgba(var(--usc-cardinal-rgb), 0.4);
+
+  /* Spacing */
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 20px;
+  --space-xl: 30px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-xxl: 12px;
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s ease;
+  --transition-slow: 0.7s ease;
+}
+/* ==========================================================================
+  2. Base Styles
+  ========================================================================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, "San Francisco", sans-serif;
+  background-color: var(--neutral-light);
+  background: linear-gradient(
+    to right,
+    var(--usc-cardinal),
+    var(--usc-gold),
+    var(--usc-cardinal)
+  );
+}
+
+/* ==========================================================================
+  3. Header Styles
+  ========================================================================== */
+
+header {
+  padding: var(--space-sm) 0;
+  text-align: center;
+  border-bottom: 6px solid var(--usc-gold);
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  box-shadow: 0 4px 10px -4px var(--cardinal-shadow-strong);
+}
+
+header h1,
+header h2 {
+  margin: 0;
+  text-shadow: 1px 1px 2px var(--shadow-dark);
+  color: var(--neutral-light);
+}
+
+header h1 {
+  font-size: 2.5em;
+}
+
+header h2 {
+  font-size: 1.2em;
+}
+
+/* ==========================================================================
+  4. Main Content Styles & Flexbox Layout
+  ========================================================================== */
+
+main {
+  max-width: 960px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-lg);
+  background-color: var(--neutral-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.flex-container {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 3;
+  min-width: 300px;
+}
+
+.main-content {
+  flex: 9;
+}
+
+/* Projects Page Styles */
+.projects-container {
+  max-width: 960px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.project-card {
+  flex: 1 1 calc(33% - var(--space-xl));
+  background-color: var(--neutral-white);
+  border: 1px solid var(--neutral-medium);
+  border-radius: var(--radius-xxl);
+  box-shadow: 0 4px 6px var(--shadow-light);
+  overflow: hidden;
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.project-card:hover {
+  transform: translateY(-var(--space-xs));
+  box-shadow: 0 8px 15px var(--shadow-medium);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 1px solid var(--neutral-medium);
+  transition: transform var(--transition-medium);
+  position: relative;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "💀";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-color: var(--neutral-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  z-index: 2;
+  opacity: 0;
+  transform: rotateY(180deg);
+  transition: opacity var(--transition-medium),
+    transform var(--transition-medium);
+  border-bottom: 1px solid var(--neutral-medium);
+}
+
+.project-card:hover .project-image {
+  transform: rotateY(180deg);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.project-content {
+  padding: var(--space-lg);
+}
+
+.project-content h4 {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--usc-cardinal);
+  font-size: 1.3em;
+}
+
+.project-content p {
+  margin: 0 0 var(--space-lg) 0;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+.project-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color var(--transition-fast);
+}
+
+.project-link:hover {
+  background-color: var(--usc-cardinal-dark);
+  box-shadow: 0 4px 8px var(--cardinal-shadow-medium);
+}
+
+/* ==========================================================================
+  4.5. Navigation Styles
+  ========================================================================== */
+
+nav {
+  text-align: center;
+  background-color: var(--neutral-light);
+  padding: var(--space-md) 0;
+  border-bottom: 2px solid var(--neutral-border);
+}
+
+.nav-link {
+  margin: 0 var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  background-color: transparent;
+  color: var(--neutral-dark);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  background-color: var(--usc-gold);
+  color: var(--usc-cardinal);
+  border-color: var(--usc-cardinal);
+  box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+.nav-link.active {
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  border-color: var(--usc-cardinal);
+}
+
+.nav-link.active:hover {
+  background-color: var(--usc-cardinal-dark);
+  border-color: var(--usc-cardinal-dark);
+}
+
+/* ==========================================================================
+  5. Profile Picture Styles
+  ========================================================================== */
+
+#profile-pic {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  float: right;
+  transform: scale(1) rotate(0deg);
+  transition: transform var(--transition-slow);
+}
+
+#profile-pic:hover {
+  transform: scale(1.05) rotate(15deg);
+}
+
+#profile-pic a {
+  background-color: transparent;
+  text-decoration: none;
+  box-shadow: none;
+  border: none;
+}
+
+#profile-pic a img {
+  height: 150px;
+  width: auto;
+  border-radius: var(--radius-xl);
+  border: 4px solid var(--usc-cardinal);
+  box-shadow: var(--neutral-dark) 2px 2px 6px;
+}
+
+/* ==========================================================================
+  6. Footer Styles
+  ========================================================================== */
+
+footer {
+  padding: var(--space-sm) 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 6px solid var(--usc-gold);
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  box-shadow: 0 4px 8px -4px var(--cardinal-shadow-light);
+}
+
+footer p {
+  margin: var(--space-sm);
+  color: var(--neutral-white);
+}
+
+/* ==========================================================================
+  7. Link Styles
+  ========================================================================== */
+
+a {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--usc-cardinal);
+  background-color: var(--usc-gold);
+  color: var(--usc-cardinal);
+  text-decoration: none;
+}
+
+a:hover {
+  box-shadow: 0 2px 8px rgba(var(--usc-cardinal-rgb), 0.25);
+  transition: box-shadow var(--transition-fast);
+}
+
+/* ==========================================================================
+  8. Typography
+  ========================================================================== */
+
+h1,
+h2,
+h3 {
+  color: var(--text-dark);
+}
+
+p,
+li {
+  line-height: 1.6;
+  color: var(--text-medium);
+}
+
+ul,
+ol {
+  padding-left: var(--space-lg);
+}
+
+ul a,
+ol a {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--usc-cardinal);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ul a:hover,
+ol a:hover {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+  9. Form Controls
+  ========================================================================== */
+
+/* Basic Form Elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-sm);
+  margin: var(--space-sm) 0 var(--space-md) 0;
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--usc-cardinal);
+  box-shadow: 0 0 5px var(--cardinal-shadow-light);
+  outline: none;
+}
+
+/* Valid/Invalid Input Styling */
+input:valid,
+textarea:valid,
+select:valid {
+  border-color: #28a745;
+}
+
+input:valid:focus,
+textarea:valid:focus,
+select:valid:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.25);
+}
+
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+  border-color: #dc3545;
+}
+
+input:invalid:not(:placeholder-shown):focus,
+textarea:invalid:not(:placeholder-shown):focus,
+select:invalid:not(:placeholder-shown):focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.25);
+}
+
+/* Custom validation styling for required fields */
+input[required]:invalid:not(:focus):not(:placeholder-shown),
+textarea[required]:invalid:not(:focus):not(:placeholder-shown),
+select[required]:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.05);
+}
+
+input[required]:valid:not(:focus),
+textarea[required]:valid:not(:focus),
+select[required]:valid:not(:focus) {
+  border-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.05);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Specialized Input Types */
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  margin: var(--space-md) 0;
+  background: var(--neutral-medium);
+  border-radius: var(--radius-sm);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--usc-cardinal);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--usc-cardinal-dark);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--usc-cardinal);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-fast);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--usc-cardinal-dark);
+}
+
+/* Circular gradient: center → edges */
+.box-radial {
+  background: radial-gradient(circle, var(--usc-cardinal), var(--usc-gold));
+}
+
+/* Elliptical gradient: stretched horizontally */
+.box-radial-ellipse {
+  background: radial-gradient(
+    ellipse at center,
+    var(--usc-gold),
+    var(--usc-cardinal)
+  );
+}
+
+input[type="color"] {
+  width: 60px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+input[type="color"]:focus,
+input[type="color"]:hover {
+  border-color: var(--usc-cardinal);
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: var(--space-sm);
+  margin: var(--space-sm) 0 var(--space-md) 0;
+  border: 2px dashed var(--neutral-border);
+  border-radius: var(--radius-md);
+  background-color: var(--neutral-light);
+  cursor: pointer;
+  transition: border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+input[type="file"]:hover {
+  border-color: var(--usc-cardinal);
+  background-color: var(--neutral-white);
+}
+
+input[type="file"]:focus {
+  border-color: var(--usc-cardinal);
+  background-color: var(--neutral-white);
+  outline: none;
+}
+
+/* Radio Buttons and Checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: var(--space-sm);
+  accent-color: var(--usc-cardinal);
+  cursor: pointer;
+}
+
+/* Email and URL specific validation */
+input[type="email"]:invalid:not(:placeholder-shown)::after,
+input[type="url"]:invalid:not(:placeholder-shown)::after {
+  content: "⚠️";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Pattern validation for tel inputs */
+input[type="tel"]:invalid:not(:placeholder-shown) {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z'/%3E%3Ccircle cx='8' cy='4.5' r='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 35px;
+}
+
+input[type="tel"]:valid:not(:placeholder-shown) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 35px;
+}
+
+/* Form validation messages */
+.form-group {
+  position: relative;
+}
+
+.form-group input:invalid:not(:placeholder-shown) + .validation-message,
+.form-group textarea:invalid:not(:placeholder-shown) + .validation-message,
+.form-group select:invalid:not(:placeholder-shown) + .validation-message {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+.validation-message {
+  display: none;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+.validation-message.error {
+  color: #dc3545;
+}
+
+.validation-message.success {
+  color: #28a745;
+}
+
+/* Fieldset and Legend Styling */
+fieldset {
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-sm) 0 var(--space-md) 0;
+}
+
+fieldset legend {
+  padding: 0 var(--space-sm);
+  font-weight: 500;
+  color: var(--usc-cardinal);
+}
+
+fieldset label {
+  display: block;
+  margin: var(--space-sm) 0;
+  font-weight: normal;
+}
+
+/* Button Styles - Pushable Effect */
+button {
+  background-color: var(--usc-cardinal-dark);
+  border-radius: var(--radius-md);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  font-size: 1em;
+  transition: filter var(--transition-fast);
+}
+
+button .front {
+  display: block;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--usc-cardinal);
+  color: var(--neutral-white);
+  transform: translateY(-6px);
+  transition: transform var(--transition-fast);
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+button:hover .front {
+  transform: translateY(-8px);
+}
+
+button:active .front {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background-color: var(--neutral-medium);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Form Layout & Structure */
+.contact-form {
+  max-width: 600px;
+  margin: var(--space-xl) 0;
+}
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+/* Contact Page Specific Styles */
+.contact-info {
+  background-color: var(--neutral-light);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.contact-info h3 {
+  margin-top: 0;
+  color: var(--usc-cardinal);
+}
+
+.contact-section {
+  width: 100%;
+  max-width: none;
+}
+
+/* ==========================================================================
+  10. Profile Card Horizontal Layout
+  ========================================================================== */
+.profile-card-horizontal {
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+  align-items: stretch;
+}
+
+.profile-card-horizontal .project-image {
+  width: 200px;
+  height: auto;
+  min-height: 250px;
+  border-bottom: none;
+  border-right: 1px solid var(--neutral-medium);
+  flex-shrink: 0;
+}
+
+.profile-card-horizontal .project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-card-horizontal .project-content h4 {
+  margin-top: 0;
+  font-family: "amifer", sans-serif; /* Typekit Font */
+  font-weight: 700;
+  font-style: normal;
+}
+
+.profile-card-horizontal::before {
+  width: 200px;
+  height: 100%;
+  min-height: 250px;
+  border-bottom: none;
+  border-right: 1px solid var(--neutral-medium);
+}
+
+.profile-card-horizontal .project-link {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+  11. Additional Navigation Styles for Dropdown Menus
+  ========================================================================== */
+/* Navigation */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
